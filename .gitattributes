@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.pbxproj text merge=union
+*.storyboard text
+*.xib text
+*.swift text
+*.md text
