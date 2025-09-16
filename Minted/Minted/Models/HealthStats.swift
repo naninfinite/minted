@@ -73,5 +73,27 @@ public struct HealthStats: Equatable, Codable, Hashable {
         copy.growth = Self.clamp(copy.growth + delta)
         return copy
     }
-    
 }
+
+// MARK: - Derived signal (avatar mood)
+public extension HealthStats {
+    /// A coarse health band that can drive the avatar mood.
+    /// Simple and explainable: based on the average of the four stats.
+    var overallBand: Band {
+        let avg = (hydration + vigor + growth + light) / 4
+        switch avg {
+        case 75...100:  return .healthy
+        case 40..<75:   return .okay
+        default:        return .needsCare
+        }
+    }
+    
+    /// Nested type used by the derived signal.
+    enum Band: String, Codable {
+        case healthy
+        case okay
+        case needsCare
+    }
+}
+
+
