@@ -75,3 +75,23 @@ public struct CareEvent: Identifiable, Codable, Hashable {
     }
 }
 
+// MARK: - Convenience
+
+public extension CareEvent {
+    /// Returns a concise, user-facing summary (for toasts/history cells).
+    var summary: String {
+        if let note, !note.isEmpty {
+            return "\(type.verb) - \(formattedDate) · \(note)"
+        } else {
+            return "\(type.verb) - \(formattedDate)"
+        }
+    }
+    
+    /// Localised date string suitable for UI (Medium date, Short time).
+    var formattedDate: String {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        df.timeStyle = .short
+        return df.string(from: date)
+    }
+}
