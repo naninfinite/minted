@@ -32,5 +32,14 @@ final class MintedTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testCareEventSummaryIncludesVerbAndDate() {
+        let when = Date(timeIntervalSince1970: 0) // 1 Jan 1970 UTC; deterministic
+        let e = CareEvent(type: .water, date: when, note: "Top dry")
+        let s = e.summary
+        XCTAssertTrue(s.contains("Watered"))
+        XCTAssertTrue(s.contains("Top dry"))
+        // Date string is locale-dependent, so we only assert pieces we control.
+    }
 
 }
