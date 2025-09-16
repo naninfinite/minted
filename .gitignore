@@ -1,21 +1,36 @@
 # macOS
 .DS_Store
 
-# Xcode
-DerivedData/
-Build/
+# Xcode user settings and workspaces
+*.xcworkspace/
+*.xcuserstate
+*.xcuserdata/
 *.xcworkspace/xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
 *.xcscmblueprint
+
+# Derived data and build products
+DerivedData/
+Build/
 
 # SwiftPM
 .swiftpm/
 Packages/
 Package.resolved
 
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
 # Logs
 *.log
 
 # User Settings
 *.swp
+*.lock
+
+# Xcode user-specific junk
+**/*.xcuserstate
+**/*.xcuserdatad/
+**/*.xcuserdata/
