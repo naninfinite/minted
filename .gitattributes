@@ -1,6 +1,26 @@
+# Normalise line endings
 * text=auto eol=lf
-*.pbxproj text merge=union
-*.storyboard text
-*.xib text
+
+# Swift and Xcode project files as text
 *.swift text
+*.xib text
+*.storyboard text
+*.plist text
 *.md text
+
+# Merge strategy for Xcode project files
+*.pbxproj text merge=union
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.heic binary
+*.xcassets binary
+
+# Why:
+# 	ensures line endings stay consistent (LF).
+#	treats Swift & config files as text, so diffs are clean.
+#	uses merge=union for *.pbxproj, which reduces merge conflicts when two people add files.
+#	marks images and asset catalogs as binary.
