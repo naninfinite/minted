@@ -41,5 +41,11 @@ final class MintedTests: XCTestCase {
         XCTAssertTrue(s.contains("Top dry"))
         // Date string is locale-dependent, so we only assert pieces we control.
     }
+    
+    func testOverallBandThresholds() {
+        XCTAssertEqual(HealthStats(hydration: 80, vigor: 78, growth: 76, light: 90).overallBand, .healthy)
+        XCTAssertEqual(HealthStats(hydration: 50, vigor: 55, growth: 48, light: 60).overallBand, .okay)
+        XCTAssertEqual(HealthStats(hydration: 20, vigor: 35, growth: 25, light: 30).overallBand, .needsCare)
+    }
 
 }
